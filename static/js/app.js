@@ -80,20 +80,17 @@ $(function() {
 
         data.results.forEach(function(movie) {
             var imageSrc = config.images.base_url + config.images.poster_sizes[3] + movie.poster_path;
-            var htmlStr = [
-                            '<div class="col-md-4 portfolio-item">',
-                                '<a href="javascript:void(0)" class="'+clFull+'">',
-                                    '<img class="img-responsive" src="' + imageSrc + '" alt="">',
-                                '</a>',
-                                '<h3>',
-                                    '<center><a href="javascript:void(0)" class="'+clFull+'">' + movie.title +'</a></center>',
-                                '</h3>',
-                            '</div>'
-                            ];
+            var object = [{
+                "title" : movie.title,
+                "image" : imageSrc
+            }
+            ];
+            var template = Handlebars.compile($('#tpl-div').html());
+            var markup = template(object);
             idArr.push(movie.id);
             num++;
             clFull = cl+num;
-            $('.movies-list').append($(htmlStr.join('')));
+            $('.movies-list').append(markup);
         });
             $('.btn-sel0').click(function() {
             displaySingle(0);

@@ -5,7 +5,23 @@
 </head>
 
 <body>
+    <script src="/static/js/vendors/handlebars.js"></script>
+  {% raw %}
+    
+    <script type="text/x-handlers-template" id="tpl-div">
+    {{#each this}}
+      <div class="col-md-4 portfolio-item">
+        <a href="javascript:void(0)">
+          <img class="img-responsive" src="{{image}}" />
+        </a>
+        <h3>
+          <center><a href="javascript:void(0)">{{title}}</a></center>
+        </h3>
+      </div>
 
+      {{/each}}
+    </script>
+  {% endraw %}
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
