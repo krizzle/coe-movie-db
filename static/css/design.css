@@ -1,0 +1,76 @@
+#movie-title, h1.page-header{
+	font-family: Century Gothic;
+	color: white;
+	text-align: center;
+}
+
+#poster{
+	border: 2px solid black;
+	height: 400px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#poster1{
+	border: 2px solid black;
+
+}
+h3{
+	text-align: center;
+	min-height: 70px;
+}
+
+#desc{
+	font-family: Arial;
+	color: white;
+	margin-bottom: 5px;
+}
+#id{
+	display: none;
+}
+
+#headtitle{
+	font-family: Century Gothic;
+	color: white;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+li{
+	color: white;
+}
+
+p.namec{
+	margin-bottom: 5px;
+}
+
+div.backdropstyle{
+	display: block; 
+	text-align: start; 
+	float: none; 
+	position: relative; 
+	top: auto; 
+	right: auto; 
+	bottom: auto; 
+	left: auto; 
+	z-index: auto; 
+	width: 1200px; 
+	height: 189px; 
+	margin: 0px; 
+	overflow: hidden;
+}
+
+#images{
+	text-align: left; 
+	float: none; 
+	position: absolute; 
+	top: 0px; 
+	right: auto; 
+	bottom: auto; 
+	left: 0px; 
+	margin: 0px; 
+	width: 4474px; 
+	height: 189px; 
+	z-index: auto;
+}

@@ -1,0 +1,192 @@
+<html>
+<head>
+    <title>Team 13</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/design.css">
+</head>
+
+<body background="/static/img/background.jpg">
+    {% raw %}
+      <script type="text/x-handlebars-template" id="header">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{heads}}
+                </h1>
+            </div>
+        </div>
+      </script>
+      <script type="text/x-handlebars-template" id="movie-list">
+        <div class="col-md-4 portfolio-item">
+          <a href="/movie/{{id}}" id="poster-align">
+            <img class="img-responsive" id="poster" src="{{poster}}" alt="{{title}}" >
+          </a>
+          <h3>
+            <a href="/movie/{{id}}" id="movie-title">{{title}}</a>
+          </h3>
+        </div>
+      </script>
+      <script type="text/x-handlebars-template" id="movie-no-result">
+        <div class="col-md-4 portfolio-item">
+          <h3>
+            <a href="" id="movie-title">No Results Found.</a>
+          </h3>
+        </div>
+      </script>
+      <script type="text/x-handlebars-template" id="main">
+      <div class="container" id="supermain">
+         <div class="row">
+
+            <div class="col-md-4" id="poster-credits">
+                <img class="img-responsive" id="poster1" src="{{imageSrc}}" alt="" width="300px" height="300px">
+            </div>
+
+            <div class="col-md-8" id="main-col">
+                <h1 id="headtitle">{{original_title}}</h1>
+                <br>
+                {{#if overview}}
+                <h4 id="desc">Overview:</h4>
+                <p id="desc">{{overview}}</p>
+                {{/if}}
+                {{#if tagline}}
+                <br>
+                <h4 id="desc">Tagline:</h4> 
+                <p id="desc">{{tagline}}</p>
+                {{/if}}
+                {{#if genres}}      
+                <br>          
+                <h4 id="desc">Genre:</h4> 
+                <ul>
+                {{#each genres}}
+                <div class="row">
+                <div class="col-md-2 portfolio-item">
+                <li>{{name}}</li>
+                </div>
+                </div>
+                {{/each}}
+                {{/if}}
+                </ul>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+            </div>
+          </div>
+        </div>
+      </script>
+
+      <script type="text/x-handlebars-template" id="credits-single">
+        <h4 id="desc">Staffs:</h4>
+        {{#each_upto crew 5}}
+        <span id="desc">{{name}} - {{job}}</span>
+        <br>
+        {{/each_upto}}
+
+      </script>
+
+      <script type="text/x-handlebars-template" id="credits-hero">
+      <div class="row">
+        <div class="col-md-8">
+        <h4 id="desc">Casts:</h4>
+        </div>
+      </div>
+      <div class="row">
+        {{#each_upto cast 5}}
+          <div class="col-md-2 portfolio-item">
+            <img class="img-responsive" id="poster1" src="http://image.tmdb.org/t/p/w342/{{profile_path}}" alt="" width="300px" height="300px">
+            <p id="desc" class="namec">{{name}}<p>
+          </div>
+          {{/each_upto}}
+        
+      </div>
+      </script>
+
+      <script type="text/x-handlebars-template" id="trailer">
+        <div class="row">
+          <div class="col-md-8">
+            <h4 id="desc">Trailer:</h4>
+            <embed width="700" height="400" type="application/x-shockwave-flash" src="http://www.youtube.com/v/{{vid}}">
+          </div>
+        </div>
+      </script>
+
+      <script type="text/x-handlebars-template" id="backdrop">
+        <div class="row">
+        <hr>
+          <div class="col-md-8">
+            {{#if backdrops}}
+            <h4 id="desc">Screenshots:</h4>
+            {{/if}}
+          </div>
+          <div id="backdrops" class="image_carousel">
+    <div class="backdropstyle">
+    <div id="images" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 4474px; height: 189px; z-index: auto;">
+    {{#each backdrops}}
+    <img src="http://image.tmdb.org/t/p/w300/{{file_path}}" width="300" height="169" style="margin-right: 0px;  border: 2px solid black;">
+    {{/each}}
+      </div>
+      </div>
+    <div style="clear: both;"></div>
+      </div>
+        </div>
+      </script>
+
+      <script type="text/x-handlebars-template" id="similar">
+        <div class="row">
+        <hr>
+          <div class="col-md-8">
+            <h4 id="desc">Similar Movies:</h4>
+          </div>
+        </div>
+        <div class="row">
+                    {{#each_upto results 4}}
+          <div class="col-md-3">
+            <a href="/movie/{{id}}"><img src="http://image.tmdb.org/t/p/w300/{{poster_path}}" width="200" height="300" style="margin-right: 0px;  border: 2px solid black;">
+            </a>
+          </div>
+          {{/each_upto}}
+        </div>
+      </script>
+    {% endraw %}
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><strong>Team 13</strong> Movie Database</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="javascript:void(0)" class='btn-now-showing'>Now Showing</a></li>
+              <li><a href="javascript:void(0)" class='btn-upcoming'>Upcoming</a></li>
+              <li><a href="javascript:void(0)" class='btn-popular'>Popular</a></li>
+              <li><a href="javascript:void(0)" class='btn-top-rated'>Top Rated</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search" id='form-search'>
+                <div class="form-group">
+                  <input type="text" class="form-control input-query" name='query' placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+              </form>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+    <div class="container" style='top: 70px; position: relative;'>
+        <div class='movies-list'>
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+    <p id="id">{{tid}}</p>
+    <script src="/static/js/vendors/jquery.js"></script>
+    <script src="/static/js/vendors/bootstrap.min.js"></script>
+    <script src="/static/js/app2.js"></script>
+    <script src="/static/js/vendors/handlebars.js"></script>
+
+</body>
+
+</html>
